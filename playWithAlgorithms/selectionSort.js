@@ -1,6 +1,3 @@
-const SortTestHelper = require('./utils/sortTestHelper');
-const sortTestHelper = new SortTestHelper();
-
 // 选择排序
 const selectionSort = arr => {
   for (let i = 0; i < arr.length; i++) {
@@ -16,6 +13,4 @@ const selectionSort = arr => {
   }
 };
 
-const n = 100000;
-const a = sortTestHelper.generateRandomArray(n, 0, n);
-sortTestHelper.testSort('Selection Sort', selectionSort, a);
+module.exports = selectionSort;

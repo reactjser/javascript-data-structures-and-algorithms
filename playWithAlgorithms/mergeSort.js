@@ -1,6 +1,3 @@
-const SortTestHelper = require('./utils/sortTestHelper');
-const sortTestHelper = new SortTestHelper();
-
 // 将arr[l...mid]和arr[mid+1...r]两部分进行归并
 const __merge = (arr, l, mid, r) => {
   const aux = new Array(r - l + 1);
@@ -37,7 +34,11 @@ const __mergeSort = (arr, l, r) => {
 
   __mergeSort(arr, l, mid);
   __mergeSort(arr, mid + 1, r);
-  __merge(arr, l, mid, r);
+
+  // 优化逻辑
+  if (arr[mid] > arr[mid + 1]) {
+    __merge(arr, l, mid, r);
+  }
 };
 
 // 归并排序
@@ -45,6 +46,4 @@ const mergeSort = arr => {
   __mergeSort(arr, 0, arr.length - 1);
 };
 
-const n = 100000;
-const a = sortTestHelper.generateRandomArray(n, 0, n);
-sortTestHelper.testSort('Merge Sort', mergeSort, a);
+module.exports = mergeSort;

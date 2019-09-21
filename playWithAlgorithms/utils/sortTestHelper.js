@@ -45,6 +45,10 @@ class SortTestHelper {
 
     console.log(`${sortName}: ${(endTime - startTime) / 1000}s`);
   }
+
+  copyIntArray(arr) {
+    return arr.slice();
+  }
 }
 
 module.exports = SortTestHelper;

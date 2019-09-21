@@ -10,6 +10,21 @@ class SortTestHelper {
     return arr;
   }
 
+  generateNearlyOrderedArray(n, swapTimes) {
+    const arr = new Array(n);
+    for (let i = 0; i < n; i++) {
+      arr[i] = i;
+    }
+
+    for (let i = 0; i < swapTimes; i++) {
+      const posx = Math.floor(Math.random() * n);
+      const posy = Math.floor(Math.random() * n);
+      [arr[posx], arr[posy]] = [arr[posy], arr[posx]];
+    }
+
+    return arr;
+  }
+
   isSorted(arr) {
     for (let i = 0; i < arr.length - 1; i++) {
       if (arr[i] > arr[i + 1]) {

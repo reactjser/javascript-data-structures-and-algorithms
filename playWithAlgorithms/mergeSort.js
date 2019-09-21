@@ -46,4 +46,14 @@ const mergeSort = arr => {
   __mergeSort(arr, 0, arr.length - 1);
 };
 
+// 自底向上的归并排序
+// const mergeSort = arr => {
+//   const n = arr.length;
+//   for (let sz = 1; sz < n; sz += sz) {
+//     for (let i = 0; i < n; i += sz + sz) {
+//       __merge(arr, i, i + sz - 1, Math.min(i + sz + sz - 1, n - 1));
+//     }
+//   }
+// };
+
 module.exports = mergeSort;

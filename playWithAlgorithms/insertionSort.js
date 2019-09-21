@@ -27,5 +27,5 @@ const insertionSort = arr => {
 const n = 100000;
 const a = sortTestHelper.generateRandomArray(n, 0, n);
 sortTestHelper.testSort('Insertion Sort', insertionSort, a);
-const a2 = sortTestHelper.generateNearlyOrderedArray(n, 10);
-sortTestHelper.testSort('Insertion Sort', insertionSort, a2);
+// const a2 = sortTestHelper.generateNearlyOrderedArray(n, 10);
+// sortTestHelper.testSort('Insertion Sort', insertionSort, a2);

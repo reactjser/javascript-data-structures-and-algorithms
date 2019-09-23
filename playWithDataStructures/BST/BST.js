@@ -58,4 +58,57 @@ class BST {
       return this._contains(node.right, e);
     }
   }
+
+  preOrder() {
+    this._preOrder(this.root);
+  }
+
+  _preOrder(node) {
+    if (node === null) {
+      return;
+    }
+
+    console.log(node.e);
+    this._preOrder(node.left);
+    this._preOrder(node.right);
+  }
+
+  inOrder() {
+    this._inOrder(this.root);
+  }
+
+  _inOrder(node) {
+    if (node === null) {
+      return;
+    }
+
+    this._inOrder(node.left);
+    console.log(node.e);
+    this._inOrder(node.right);
+  }
+
+  postOrder() {
+    this._postOrder(this.root);
+  }
+
+  _postOrder(node) {
+    if (node === null) {
+      return;
+    }
+
+    this._postOrder(node.left);
+    this._postOrder(node.right);
+    console.log(node.e);
+  }
 }
+
+const bst = new BST();
+const nums = [5, 3, 6, 8, 4, 2];
+for (let i = 0; i < nums.length; i++) {
+  bst.add(nums[i]);
+}
+bst.preOrder();
+console.log();
+bst.inOrder();
+console.log();
+bst.postOrder();

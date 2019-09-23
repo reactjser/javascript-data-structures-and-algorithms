@@ -1,4 +1,5 @@
 const Stack = require('../../books/stack');
+const Queue = require('../../books/queue');
 
 class Node {
   constructor(e) {
@@ -113,6 +114,17 @@ class BST {
     this._postOrder(node.right);
     console.log(node.e);
   }
+
+  levelOrder() {
+    const q = new Queue();
+    q.enqueue(this.root);
+    while(!q.isEmpty()) {
+      const cur = q.dequeue();
+      console.log(cur.e);
+      cur.left !== null && q.enqueue(cur.left);
+      cur.right !== null && q.enqueue(cur.right);
+    }
+  }
 }
 
 const bst = new BST();
@@ -120,10 +132,12 @@ const nums = [5, 3, 6, 8, 4, 2];
 for (let i = 0; i < nums.length; i++) {
   bst.add(nums[i]);
 }
-bst.preOrderNR();
-console.log();
-bst.preOrder();
-console.log();
-bst.inOrder();
-console.log();
-bst.postOrder();
+// bst.preOrderNR();
+// console.log();
+// bst.preOrder();
+// console.log();
+// bst.inOrder();
+// console.log();
+// bst.postOrder();
+
+bst.levelOrder();

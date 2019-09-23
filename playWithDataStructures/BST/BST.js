@@ -44,6 +44,79 @@ class BST {
     return node;
   }
 
+  remove(e) {
+    this.root = this._remove(this.root, e);
+  }
+
+  _remove(node, e) {
+    if (node === null) {
+      return null;
+    }
+
+    if (e < node.e) {
+      node.left = this._remove(node.left);
+      return node;
+    } else if (e > node.e) {
+      node.right = this._remove(node.right);
+      return node;
+    } else {
+      if (node.left === null) {
+        const rightNode = node.right;
+        node.right = null;
+        this.size--;
+        return rightNode;
+      }
+      if (node.right === null) {
+        const leftNode = node.left;
+        node.left = null;
+        this.size--;
+        return leftNode;
+      }
+
+      // 待删除节点左右子树均不为空
+      const successor = this.minimun(node.right);
+      successor.right = this.removeMin(node.right);
+      // this.size++;
+
+      successor.left = node.left;
+      node.left = node.right = null;
+      // this.size--;
+      return successor;
+    }
+  }
+
+  minimun() {
+    if (this.size === 0) {
+      throw new Error('BST is empty!');
+    }
+    this._minimum(this.root).e;
+  }
+
+  _minimum(node) {
+    if (node.left === null) {
+      return node;
+    }
+    return this._minimum(node.left);
+  }
+
+  removeMin() {
+    const ret = this.minimum();
+    this._removeMin(this.root);
+    return ret;
+  }
+
+  _removeMin(node) {
+    if (node.left === null) {
+      const rightNode = node.right;
+      node.right = null;
+      this.size--;
+      return rightNode;
+    }
+
+    node.left = this._removeMin(node.left);
+    return node;
+  }
+
   contains(e) {
     return this._contains(this.root, e);
   }
@@ -65,10 +138,10 @@ class BST {
   preOrderNR() {
     const stack = new Stack();
     stack.push(this.root);
-    while(!stack.isEmtpy()) {
+    while (!stack.isEmtpy()) {
       const cur = stack.pop();
       console.log(cur.e);
-      cur.right !== null && stack.push(cur.right)
+      cur.right !== null && stack.push(cur.right);
       cur.left !== null && stack.push(cur.left);
     }
   }
@@ -118,7 +191,7 @@ class BST {
   levelOrder() {
     const q = new Queue();
     q.enqueue(this.root);
-    while(!q.isEmpty()) {
+    while (!q.isEmpty()) {
       const cur = q.dequeue();
       console.log(cur.e);
       cur.left !== null && q.enqueue(cur.left);

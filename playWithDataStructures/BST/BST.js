@@ -1,3 +1,5 @@
+const Stack = require('../../books/stack');
+
 class Node {
   constructor(e) {
     this.e = e;
@@ -59,6 +61,17 @@ class BST {
     }
   }
 
+  preOrderNR() {
+    const stack = new Stack();
+    stack.push(this.root);
+    while(!stack.isEmtpy()) {
+      const cur = stack.pop();
+      console.log(cur.e);
+      cur.right !== null && stack.push(cur.right)
+      cur.left !== null && stack.push(cur.left);
+    }
+  }
+
   preOrder() {
     this._preOrder(this.root);
   }
@@ -107,6 +120,8 @@ const nums = [5, 3, 6, 8, 4, 2];
 for (let i = 0; i < nums.length; i++) {
   bst.add(nums[i]);
 }
+bst.preOrderNR();
+console.log();
 bst.preOrder();
 console.log();
 bst.inOrder();

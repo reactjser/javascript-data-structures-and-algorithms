@@ -39,3 +39,5 @@ class Stack {
     this.count = 0;
   }
 }
+
+module.exports = Stack;

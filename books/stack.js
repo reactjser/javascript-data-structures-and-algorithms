@@ -13,12 +13,12 @@ class Stack {
     return this.count;
   }
 
-  isEmtpy() {
+  isEmpty() {
     return this.count === 0;
   }
 
   pop() {
-    if (this.isEmtpy()) {
+    if (this.isEmpty()) {
       return undefined;
     }
     this.count--;
@@ -28,7 +28,7 @@ class Stack {
   }
 
   peek() {
-    if (this.isEmtpy()) {
+    if (this.isEmpty()) {
       return undefined;
     }
     return this.items[this.count - 1];

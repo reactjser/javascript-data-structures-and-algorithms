@@ -106,7 +106,7 @@ class LinkedList {
   toString() {
     let res = '';
     let cur = this.dummyHead.next;
-    while (cur != null) {
+    while (cur !== null) {
       res += `${cur.e} -> `;
       cur = cur.next;
     }

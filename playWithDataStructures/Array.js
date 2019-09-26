@@ -23,7 +23,7 @@ class MyArray {
   // 在第index个位置插入一个新元素e
   add(index, e) {
     if (index < 0 || index > this.size) {
-      throw new RangeError(
+      throw new Error(
         `Add failed. Require index >=0 and index <= ${this.size}`
       );
     }
@@ -54,7 +54,7 @@ class MyArray {
   // 获取index索引位置的元素
   get(index) {
     if (index < 0 || index >= this.size) {
-      throw new RangeError('Get failed. Index is illegal.');
+      throw new Error('Get failed. Index is illegal.');
     }
     return this.data[index];
   }
@@ -72,7 +72,7 @@ class MyArray {
   // 修改index索引位置的元素为e
   set(index, e) {
     if (index < 0 || index >= this.size) {
-      throw new RangeError('Set failed. Index is illegal.');
+      throw new Error('Set failed. Index is illegal.');
     }
     this.data[index] = e;
   }
@@ -100,7 +100,7 @@ class MyArray {
   // 从数组中删除index位置的元素，返回删除的元素
   remove(index) {
     if (index < 0 || index >= this.size) {
-      throw new RangeError('Remove failed. Index is illegal.');
+      throw new Error('Remove failed. Index is illegal.');
     }
     const ret = this.data[index];
 

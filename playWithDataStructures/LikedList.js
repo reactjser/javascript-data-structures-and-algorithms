@@ -43,11 +43,11 @@ class LinkedList {
     if (index < 0 || index > this.size) {
       throw new Error('Get failed. Illegal index.');
     }
-    let prev = this.dummyHead;
+    let cur = this.dummyHead.next;
     for (let i = 0; i < index; i++) {
-      prev = prev.next;
+      cur = cur.next;
     }
-    return prev.next.e;
+    return cur.e;
   }
 
   getFirst() {

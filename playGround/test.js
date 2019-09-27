@@ -1,30 +1,38 @@
+const chalk = require('chalk');
 const ListNode = require('./ListNode');
 
-var mergeTwoLists = function(l1, l2) {
-  let l1Cur = l1;
-  let l2Cur = l2;
-  let dummyHead = new ListNode();
-  let prev = dummyHead;
-  while (l1Cur !== null || l2Cur !== null) {
-    if (!l1Cur) {
-      prev.next = new ListNode(l2Cur.val);
-      l2Cur = l2Cur.next;
-    } else if (!l2Cur) {
-      prev.next = new ListNode(l1Cur.val);
-      l1Cur = l1Cur.next;
-    } else if (l1Cur.val <= l2Cur.val) {
-      prev.next = new ListNode(l1Cur.val);
-      l1Cur = l1Cur.next;
-    } else {
-      prev.next = new ListNode(l2Cur.val);
-      l2Cur = l2Cur.next;
-    }
-    prev = prev.next;
+var removeElements = function(head, val, depth) {
+  console.log(
+    chalk.cyan(
+      '--'.repeat(depth) + `Call: remove ${val} in ${head && head.toString()}`
+    )
+  );
+
+  if (head === null) {
+    console.log(chalk.green('--'.repeat(depth) + 'Return: ' + head));
+    return null;
   }
-  return dummyHead.next;
+
+  const res = removeElements(head.next, val, depth + 1);
+  console.log(
+    chalk.yellow(
+      '--'.repeat(depth) + `After remove ${val}: ${res && res.toString()}`
+    )
+  );
+
+  let ret;
+  if (head.val === val) {
+    ret = res;
+  } else {
+    head.next = res;
+    ret = head;
+  }
+  console.log(
+    chalk.green('--'.repeat(depth) + `Return: ${ret && ret.toString()}`)
+  );
+  return ret;
 };
 
-const l1 = new ListNode([1, 2, 4]);
-const l2 = new ListNode([1, 3, 4]);
-const result = mergeTwoLists(l1, l2);
-console.log(result.toString());
+const head = new ListNode([6, 7, 8]);
+const val = 7;
+const result = removeElements(head, val, 0);

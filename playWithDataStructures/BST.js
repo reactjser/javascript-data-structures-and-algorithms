@@ -54,10 +54,10 @@ class BST {
     }
 
     if (e < node.e) {
-      node.left = this._remove(node.left);
+      node.left = this._remove(node.left, e);
       return node;
     } else if (e > node.e) {
-      node.right = this._remove(node.right);
+      node.right = this._remove(node.right, e);
       return node;
     } else {
       if (node.left === null) {
@@ -74,8 +74,8 @@ class BST {
       }
 
       // 待删除节点左右子树均不为空
-      const successor = this.minimum(node.right);
-      successor.right = this.removeMin(node.right);
+      const successor = this._minimum(node.right);
+      successor.right = this._removeMin(node.right);
       // this.size++;
 
       successor.left = node.left;
@@ -210,7 +210,7 @@ const nums = [5, 3, 6, 8, 4, 2];
 for (let i = 0; i < nums.length; i++) {
   bst.add(nums[i]);
 }
-// bst.remove(5)
+bst.remove(8)
 // bst.preOrderNR();
 // console.log();
 // bst.preOrder();
@@ -218,5 +218,5 @@ for (let i = 0; i < nums.length; i++) {
 // bst.inOrder();
 // console.log();
 // bst.postOrder();
-bst.removeMin()
+// bst.removeMin()
 bst.levelOrder();

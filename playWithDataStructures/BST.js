@@ -15,7 +15,7 @@ class BST {
     this.size = 0;
   }
 
-  size() {
+  getSize() {
     return this.size;
   }
 
@@ -205,18 +205,4 @@ class BST {
   }
 }
 
-const bst = new BST();
-const nums = [5, 3, 6, 8, 4, 2];
-for (let i = 0; i < nums.length; i++) {
-  bst.add(nums[i]);
-}
-bst.remove(8)
-// bst.preOrderNR();
-// console.log();
-// bst.preOrder();
-// console.log();
-// bst.inOrder();
-// console.log();
-// bst.postOrder();
-// bst.removeMin()
-bst.levelOrder();
+module.exports = BST;

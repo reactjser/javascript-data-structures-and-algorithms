@@ -1,5 +1,5 @@
-const Stack = require('../../books/stack');
-const Queue = require('../../books/queue');
+const Stack = require('./ArrayStack');
+const Queue = require('./LoopQueue');
 
 class Node {
   constructor(e) {
@@ -194,8 +194,13 @@ class BST {
     while (!q.isEmpty()) {
       const cur = q.dequeue();
       console.log(cur.e);
-      cur.left !== null && q.enqueue(cur.left);
-      cur.right !== null && q.enqueue(cur.right);
+
+      if (cur.left !== null) {
+        q.enqueue(cur.left);
+      }
+      if (cur.right !== null) {
+        q.enqueue(cur.right);
+      }
     }
   }
 }

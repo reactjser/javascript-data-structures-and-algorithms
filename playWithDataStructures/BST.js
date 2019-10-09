@@ -74,7 +74,7 @@ class BST {
       }
 
       // 待删除节点左右子树均不为空
-      const successor = this.minimun(node.right);
+      const successor = this.minimum(node.right);
       successor.right = this.removeMin(node.right);
       // this.size++;
 
@@ -85,11 +85,11 @@ class BST {
     }
   }
 
-  minimun() {
+  minimum() {
     if (this.size === 0) {
       throw new Error('BST is empty!');
     }
-    this._minimum(this.root).e;
+    return this._minimum(this.root);
   }
 
   _minimum(node) {
@@ -210,6 +210,7 @@ const nums = [5, 3, 6, 8, 4, 2];
 for (let i = 0; i < nums.length; i++) {
   bst.add(nums[i]);
 }
+// bst.remove(5)
 // bst.preOrderNR();
 // console.log();
 // bst.preOrder();
@@ -217,5 +218,5 @@ for (let i = 0; i < nums.length; i++) {
 // bst.inOrder();
 // console.log();
 // bst.postOrder();
-
+bst.removeMin()
 bst.levelOrder();

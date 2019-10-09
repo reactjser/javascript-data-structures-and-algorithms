@@ -20,7 +20,7 @@ class LoopQueue {
   getSize() {
     return this.tail >= this.front
       ? this.tail - this.front
-      : this.tail - this.front + data.length;
+      : this.tail - this.front + this.data.length;
   }
 
   enqueue(e) {

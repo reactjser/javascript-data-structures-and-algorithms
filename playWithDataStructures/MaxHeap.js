@@ -1,6 +1,13 @@
 class MaxHeap {
-  constructor() {
-    this.data = [];
+  constructor(arr) {
+    if (Array.isArray(arr)) {
+      this.data = arr;
+      for (let i = this._parent(arr.length - 1); i >= 0; i--) {
+        this._siftDown(i);
+      }
+    } else {
+      this.data = [];
+    }
   }
 
   getSize() {
@@ -86,6 +93,16 @@ class MaxHeap {
 
     return ret;
   }
+
+  // 取出堆中的最大元素，并且替换成元素e
+  replace(e) {
+    const ret = this.findMax();
+
+    this.data[0] = e;
+    this._siftDown(0);
+
+    return ret;
+  }
 }
 
-const heap = new MaxHeap();
+module.exports = MaxHeap;

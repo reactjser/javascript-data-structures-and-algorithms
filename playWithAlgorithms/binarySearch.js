@@ -3,7 +3,7 @@ const binarySearch = (arr, target) => {
   // 在arr[l...r]之中查找target
   let l = 0;
   let r = n - 1;
-  while (l <= r) {
+  while (l <= r) { // 当l === r时，区间[l...r]依然是有效的
     const mid = l + Math.trunc((r - l) / 2);
     if (arr[mid] === target) {
       return mid;
